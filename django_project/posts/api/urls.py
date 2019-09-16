@@ -1,11 +1,11 @@
 from django.urls import path, include
-from .views import PostListAPIView, PostDetailAPIView
+from .views import PostListAPIView, PostDetailAPIView, PostUpdateAPIView, PostDeleteAPIView
 
 app_name = 'api-posts'
 urlpatterns = [
     path('', PostListAPIView.as_view(), name='list'),
     # path('create/', views.post_create, name='create'),
     path('<int:pk>/', PostDetailAPIView.as_view(), name='detail'),
-    # path('<slug:slug>/update/', views.post_update),
-    # path('<slug:slug>/delete/', views.post_delete),
+    path('<int:pk>/update/', PostUpdateAPIView.as_view(), name='update'),
+    path('<int:pk>/delete/', PostDeleteAPIView.as_view(), name='delete'),
 ]
